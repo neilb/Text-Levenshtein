@@ -3,7 +3,7 @@ use ExtUtils::MakeMaker;
 # the contents of the Makefile that is written.
 WriteMakefile(
 	      NAME	=> 'Text::Levenshtein',
-	      VERSION	=> '0.03',
+	      VERSION	=> '0.05',
 	      LINKTYPE	=> '$(INST_PM)',
 	      PREREQ_PM => {'Test::More' => 0}
 	     );

@@ -2,6 +2,9 @@ Change file for Text::Levenshtein
 Dree Mistrut <dree@friul.it>
 Josh Goldberg <josh@3io.com>
 
+Version 0.05: 2004/06/29
+   Rename distfile for consistency
+
 Version 0.04: 2004/03/06
 
    Added several modifications to increase speed

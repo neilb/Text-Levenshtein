@@ -5,4 +5,5 @@ WriteMakefile(
 	      NAME	=> 'Text::Levenshtein',
 	      VERSION	=> '0.03',
 	      LINKTYPE	=> '$(INST_PM)',
+	      PREREQ_PM => {'Test::More' => 0}
 	     );

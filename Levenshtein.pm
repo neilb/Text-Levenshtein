@@ -7,7 +7,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION     = '0.04';
 @ISA         = qw(Exporter);
 @EXPORT      = ();
-@EXPORT_OK   = qw(&distance);
+@EXPORT_OK   = qw(&distance &fastdistance);
 %EXPORT_TAGS = ();
 
 

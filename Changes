@@ -1,5 +1,12 @@
 Change file for Text::Levenshtein
 Dree Mistrut <dree@friul.it>
+Josh Goldberg <josh@3io.com>
+
+Version 0.04: 2004/03/06
+
+   Added several modifications to increase speed
+   Added fastdistance routine when array form can be sacrificed
+    for increased speed
 
 Version 0.03 : 2002/07/28
 

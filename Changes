@@ -1,0 +1,11 @@
+Change file for Text::Levenshtein
+Dree Mistrut <dree@friul.it>
+
+Version 0.0.1 : 20/05/2002 17:48
+
+   No changes -- initial release
+
+
+Version 0.0.2 : 21/05/2002 11:10
+
+   Added array support

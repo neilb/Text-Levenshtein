@@ -4,7 +4,7 @@ use strict;
 use Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
-$VERSION     = '0.02';
+$VERSION     = '0.03';
 @ISA         = qw(Exporter);
 @EXPORT      = ();
 @EXPORT_OK   = qw(&distance);
@@ -39,8 +39,9 @@ sub distance {
 		if(!$n) {push @result,$m;last}
 		if(!$m) {push @result,$n;last}
 
-		foreach my $i (0 .. $n) {$d[$i][0]=$i}
-		foreach my $j (0 .. $m) {$d[0][$j]=$j}
+		$d[0][0]=0;
+		foreach my $i (1 .. $n) {$d[$i][0]=$i}
+		foreach my $j (1 .. $m) {$d[0][$j]=$j}
 
 		foreach my $i (1 .. $n) {
 			my $s_i=substr($s,$i-1,1);
@@ -79,16 +80,16 @@ Text::Levenshtein - An implementation of the Levenshtein edit distance
 
 =head1 SYNOPSIS
 
-use Text::Levenshtein qw(distance);
+ use Text::Levenshtein qw(distance);
 
-print distance("foo","four");
-# prints "2"
+ print distance("foo","four");
+ # prints "2"
 
-my @words=("four","foo","bar");
-my @distances=distance("foo",@words);
+ my @words=("four","foo","bar");
+ my @distances=distance("foo",@words);
 
-print "@distances";
-# prints "2 0 3"
+ print "@distances";
+ # prints "2 0 3"
  
 
 =head1 DESCRIPTION
@@ -99,6 +100,10 @@ This distance is the number of substitutions, deletions or insertions ("edits")
 needed to transform one string into the other one (and vice versa).
 When two strings have distance 0, they are the same.
 A good point to start is: <http://www.merriampark.com/ld.htm>
+
+See also Text::WagnerFischer on CPAN for a configurable edit distance, i.e. for
+configurable costs (weights) for the edits.
+
 
 =head1 AUTHOR
 

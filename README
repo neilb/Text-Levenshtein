@@ -2,6 +2,8 @@
 Text::Levenshtein is an implementation of the Levenshtein edit distance in Perl.
 A good point to start is: <http://www.merriampark.com/ld.htm>
 
+See also Text::WagnerFischer on CPAN for a configurable edit distance. 
+
 
 PREREQUISITES
 

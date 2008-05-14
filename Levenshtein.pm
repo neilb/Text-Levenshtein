@@ -4,7 +4,7 @@ use strict;
 use Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
-$VERSION     = '0.04';
+$VERSION     = '0.06_01';
 @ISA         = qw(Exporter);
 @EXPORT      = ();
 @EXPORT_OK   = qw(&distance &fastdistance);
@@ -40,15 +40,9 @@ sub distance
 
 		$d[0][0]=0;
 		foreach my $i (1 .. $n) {
-			if ($i != $n && substr($s,$i) eq substr($t,$i)) {
-				push @result,$i;next;
-			}
 			$d[$i][0]=$i;
 		}
 		foreach my $j (1 .. $m) {
-			if ($j != $m && substr($s,$j) eq substr($t,$j)) {
-				push @result,$j;next;
-			}
 			$d[0][$j]=$j;
 		}
 

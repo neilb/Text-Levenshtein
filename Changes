@@ -1,32 +1,34 @@
-Change file for Text::Levenshtein
-Dree Mistrut <dree@friul.it>
-Josh Goldberg <josh@3io.com>
+Revision history for Perl module Text::Levenshtein
 
-Version 0.06: 2008/05/13
-   Bugfixes, especially 26134
+0.07 2014-04-
 
-Version 0.05: 2004/06/29
-   Rename distfile for consistency
+    - Reformatted Changes as per CPAN::Changes::Spec
 
-Version 0.04: 2004/03/06
+0.06_01 2008-05-14 JGOLDBERG
 
-   Added several modifications to increase speed
-   Added fastdistance routine when array form can be sacrificed
-    for increased speed
+    - Bugfixes, especially 26134
 
-Version 0.03 : 2002/07/28
+0.05 2004-07-01 JGOLDBERG
 
-   Changed docs to point to Text::WagnerFischer
-   (Thanks to S. Rodighiero and D. Frankowski to point me this)
-   Better initialization of the matrix 
+    - Rename distfile for consistency
 
+0.04: 2004-03-06 JGOLDBERG
 
-Version 0.02 : 2002/05/21
+    - Added several modifications to increase speed
+    - Added fastdistance routine when array form can be sacrificed
+      for increased speed
 
-   Added array support
+0.03 2002-07-28 DREE
 
+   - Changed docs to point to Text::WagnerFischer
+     (Thanks to S. Rodighiero and D. Frankowski to point me this)
+   - Better initialization of the matrix 
 
-Version 0.01 : 2002/05/20
+0.02 2002-05-29 DREE
 
-   No changes -- initial release
+   - Added array support
+
+0.01 2002-05-20 DREE
+
+   - No changes -- initial release
 

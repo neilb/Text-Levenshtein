@@ -11,6 +11,7 @@ Revision history for Perl module Text::Levenshtein
     - Specified min perl version as 5.6.0
     - Added a bunch of similar modules to the SEE ALSO section
     - Added an explicit COPYRIGHT AND LICENSE section in pod
+    - Added github repo to pod (and to the metadata)
     - Reformatted Changes as per CPAN::Changes::Spec
 
 0.06_01 2008-05-14 JGOLDBERG

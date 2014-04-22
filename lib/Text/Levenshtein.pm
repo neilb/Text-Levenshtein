@@ -166,6 +166,10 @@ L<String::Similarity> takes two strings and returns a value between
 0 (meaning entirely different) and 1 (meaning identical).
 Apparently based on edit distance.
 
+=head1 REPOSITORY
+
+L<https://github.com/neilbowers/Text-Levenshtein>
+
 =head1 AUTHOR
 
 Dree Mistrut originally wrote this module and released it to CPAN in 2002.

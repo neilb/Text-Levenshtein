@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use Exporter;
 use Carp;
+use List::Util ();
 
 our @ISA         = qw(Exporter);
 our @EXPORT      = ();
@@ -51,7 +52,7 @@ sub fastdistance
 
         for ($j = 0; $j < $t_length; $j++) {
             my $cost = substr($s, $i, 1) eq substr($t, $j, 1) ? 0 : 1;
-            $v1[$j + 1] = _min(
+            $v1[$j + 1] = List::Util::min(
                               $v1[$j] + 1,
                               $v0[$j + 1] + 1,
                               $v0[$j] + $cost,
@@ -64,16 +65,6 @@ sub fastdistance
     }
 
     return $v1[ $t_length];
-}
-
-sub _min
-{
-    my $min    = shift;
-    my @others = @_;
-    foreach my $value (@others) {
-        $min = $value if $value < $min;
-    }
-    return $min;
 }
 
 1;

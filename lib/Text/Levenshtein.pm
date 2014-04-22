@@ -4,101 +4,85 @@ use 5.006;
 use strict;
 use warnings;
 use Exporter;
+use Carp;
 
-our $VERSION     = '0.06_02';
 our @ISA         = qw(Exporter);
 our @EXPORT      = ();
-our @EXPORT_OK   = qw(&distance &fastdistance);
+our @EXPORT_OK   = qw(distance fastdistance);
 our %EXPORT_TAGS = ();
-
-
-sub _min
-{
-	return $_[0] < $_[1]
-		? $_[0] < $_[2] ? $_[0] : $_[2]
-		: $_[1] < $_[2] ? $_[1] : $_[2];
-}
 
 
 sub distance
 {
+    croak "distance() takes 2 or more arguments" if @_ < 2;
 	my ($s,@t)=@_;
-
-	my $n=length($s);
-	my @result;
+    my @results;
 
 	foreach my $t (@t) {
-		if ($s eq $t) {
-			push @result, 0;
-			next;
-		}
-		my @d;
-		my $cost=0;
-
-		my $m=length($t);
-		push @result,$m and next unless $n;
-		push @result,$n and next unless $m;
-
-		$d[0][0]=0;
-		foreach my $i (1 .. $n) {
-			$d[$i][0]=$i;
-		}
-		foreach my $j (1 .. $m) {
-			$d[0][$j]=$j;
-		}
-
-		for my $i (1 .. $n) {
-			my $s_i=substr($s,$i-1,1);
-			for my $j (1 .. $m) {
-				$d[$i][$j]=&_min($d[$i-1][$j]+1,
-					 $d[$i][$j-1]+1,
-					 $d[$i-1][$j-1]+($s_i eq substr($t,$j-1,1) ? 0 : 1) )
-			}
-		}
-
-		push @result,$d[$n][$m];
+		push(@results, fastdistance($s, $t));
 	}
 
-	if (wantarray) {return @result} else {return $result[0]}
+	return wantarray ? @results : $results[0];
 }
 
+# This is the "Iterative with two matrix rows" version
+# from the wikipedia page
+# http://en.wikipedia.org/wiki/Levenshtein_distance#Computing_Levenshtein_distance
 sub fastdistance
 {
-	my $word1 = shift;
-	my $word2 = shift;
+    croak "fastdistance() takes exactly 2 arguments" unless @_ == 2;
+    my ($s, $t) = @_;
+    my (@v0, @v1);
+    my ($i, $j);
 
-	return 0 if $word1 eq $word2;
-	my @d;
+    return 0 if $s eq $t;
+    return length($s) if !$t || length($t) == 0;
+    return length($t) if !$s || length($s) == 0;
 
-	my $len1 = length $word1;
-	my $len2 = length $word2;
+    my $s_length = length($s);
+    my $t_length = length($t);
 
-	$d[0][0] = 0;
-	for (1 .. $len1) {
-		$d[$_][0] = $_;
-		return $_ if $_!=$len1 && substr($word1,$_) eq substr($word2,$_);
-	}
-	for (1 .. $len2) {
-		$d[0][$_] = $_;
-		return $_ if $_!=$len2 && substr($word1,$_) eq substr($word2,$_);
-	}
+    for ($i = 0; $i < $t_length + 1; $i++) {
+        $v0[$i] = $i;
+    }
 
-	for my $i (1 .. $len1) {
-		my $w1 = substr($word1,$i-1,1);
-		for (1 .. $len2) {
-			$d[$i][$_] = _min($d[$i-1][$_]+1, $d[$i][$_-1]+1, $d[$i-1][$_-1]+($w1 eq substr($word2,$_-1,1) ? 0 : 1));
-		}
-	}
-	return $d[$len1][$len2];
+    for ($i = 0; $i < $s_length; $i++) {
+        $v1[0] = $i + 1;
+
+        for ($j = 0; $j < $t_length; $j++) {
+            my $cost = substr($s, $i, 1) eq substr($t, $j, 1) ? 0 : 1;
+            $v1[$j + 1] = _min(
+                              $v1[$j] + 1,
+                              $v0[$j + 1] + 1,
+                              $v0[$j] + $cost,
+                             );
+        }
+
+        for ($j = 0; $j < $t_length + 1; $j++) {
+            $v0[$j] = $v1[$j];
+        }
+    }
+
+    return $v1[ $t_length];
 }
-	
+
+sub _min
+{
+    my $min    = shift;
+    my @others = @_;
+    foreach my $value (@others) {
+        $min = $value if $value < $min;
+    }
+    return $min;
+}
+
 1;
 
 __END__
 
 =head1 NAME
 
-Text::Levenshtein - An implementation of the Levenshtein edit distance
+Text::Levenshtein - calculate the Levenshtein edit distance between two strings
 
 =head1 SYNOPSIS
 
@@ -107,27 +91,51 @@ Text::Levenshtein - An implementation of the Levenshtein edit distance
  print distance("foo","four");
  # prints "2"
 
- print fastdistance("foo","four");
- # prints "2" faster
-
- my @words=("four","foo","bar");
- my @distances=distance("foo",@words);
+ my @words     = qw/ four foo bar /;
+ my @distances = distance("foo",@words);
 
  print "@distances";
  # prints "2 0 3"
- 
 
 =head1 DESCRIPTION
 
-This module implements the Levenshtein edit distance.
-The Levenshtein edit distance is a measure of the degree of proximity between two strings.
+This module implements the Levenshtein edit distance,
+which measures the difference between two strings,
+in terms of the I<edit distance>.
 This distance is the number of substitutions, deletions or insertions ("edits") 
 needed to transform one string into the other one (and vice versa).
 When two strings have distance 0, they are the same.
-A good point to start is: <http://www.merriampark.com/ld.htm>
 
-The C<fastdistance()> function can be called with two scalars
-and is faster in most cases.
+To learn more about the Levenshtein metric,
+have a look at the
+L<wikipedia page|http://en.wikipedia.org/wiki/Levenshtein_distance>.
+
+=head2 distance()
+
+The simplest usage will take two strings and return the edit distance:
+
+ $distance = distance('brown', 'green');
+ # returns 3, as 'r' and 'n' don't change
+
+Instead of a single second string, you can pass a list of strings.
+Each string will be compared to the first string passed, and a list
+of the edit distances returned:
+
+ @words     = qw/ green trainee brains /;
+ @distances = distances('brown', @words);
+ # returns (3, 5, 3)
+
+=head2 fastdistance()
+
+Previous versions of this module provided an alternative
+implementation, in the function C<fastdistance()>.
+This function is still provided, for backwards compatibility,
+but they now run the same function to calculate the edit distance.
+
+Unlike C<distance()>, C<fastdistance()> only takes two strings,
+and returns the edit distance between them.
+
+=head1 SEE ALSO
 
 See also Text::LevenshteinXS on CPAN if you do not require a perl-only
 implementation.
@@ -139,7 +147,14 @@ configurable costs (weights) for the edits.
 
 =head1 AUTHOR
 
-Copyright 2002 Dree Mistrut <F<dree@friul.it>>
+Dree Mistrut originally wrote this module and released it to CPAN in 2002.
+
+Josh Goldberg then took over maintenance and released versions between
+2004 and 2008.
+
+Neil Bowers (NEILB on CPAN) is now maintaining this module.
+Version 0.07 was a complete rewrite, based on one of the algorithms
+on the wikipedia page.
 
 This package is free software and is provided "as is" without express
 or implied warranty.  You can redistribute it and/or modify it under 

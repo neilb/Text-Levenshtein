@@ -4,6 +4,7 @@ Revision history for Perl module Text::Levenshtein
 
     - Moved module to lib/Text/Levenshtein.pm
     - Moved test.pl to t/01-original.t and changed it to be a proper testsuite
+    - Removed META.yml so metadata files will be generated
     - Reformatted Changes as per CPAN::Changes::Spec
 
 0.06_01 2008-05-14 JGOLDBERG

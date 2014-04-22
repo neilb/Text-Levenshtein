@@ -156,8 +156,13 @@ Neil Bowers (NEILB on CPAN) is now maintaining this module.
 Version 0.07 was a complete rewrite, based on one of the algorithms
 on the wikipedia page.
 
-This package is free software and is provided "as is" without express
-or implied warranty.  You can redistribute it and/or modify it under 
-the same terms as Perl itself.
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (C) 2002-2004 Dree Mistrut.
+Copyright (C) 2004-2014 Josh Goldberg.
+Copyright (C) 2014- Neil Bowers.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut

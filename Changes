@@ -2,6 +2,7 @@ Revision history for Perl module Text::Levenshtein
 
 0.07 2014-04-
 
+    - Moved module to lib/Text/Levenshtein.pm
     - Reformatted Changes as per CPAN::Changes::Spec
 
 0.06_01 2008-05-14 JGOLDBERG

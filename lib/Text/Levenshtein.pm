@@ -126,10 +126,12 @@ needed to transform one string into the other one (and vice versa).
 When two strings have distance 0, they are the same.
 A good point to start is: <http://www.merriampark.com/ld.htm>
 
-&fastdistance can be called with two scalars and is faster in most cases.
+The C<fastdistance()> function can be called with two scalars
+and is faster in most cases.
 
-See also Text::LevenshteinXS on CPAN if you do not require a perl-only implementation.  It
-is extremely faster in nearly all cases.
+See also Text::LevenshteinXS on CPAN if you do not require a perl-only
+implementation.
+It is extremely faster in nearly all cases.
 
 See also Text::WagnerFischer on CPAN for a configurable edit distance, i.e. for
 configurable costs (weights) for the edits.

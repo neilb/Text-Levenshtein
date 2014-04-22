@@ -2,6 +2,7 @@ Revision history for Perl module Text::Levenshtein
 
 0.06_02 2014-04-23
 
+    - Drop the '&' before 'fastdistance' in the doc. RT#42535
     - Moved module to lib/Text/Levenshtein.pm
     - Moved test.pl to t/01-original.t and changed it to be a proper testsuite
     - Removed META.yml so metadata files will be generated

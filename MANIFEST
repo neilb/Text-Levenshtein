@@ -2,6 +2,6 @@ Changes
 Makefile.PL
 README
 lib/Text/Levenshtein.pm
-test.pl
+t/01-original.t
 MANIFEST
 META.yml                                 Module meta-data (added by MakeMaker)

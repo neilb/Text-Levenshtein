@@ -1,6 +1,13 @@
+#!perl
+#
+# 01-original.t - this is the original testsuite that was included
+#
+
 use strict;
-use Test::More qw (no_plan);
-use lib 'blib/lib';
+use warnings;
+
+use Test::More 0.88 tests => 9;
+
 use Text::Levenshtein qw(distance fastdistance);
 
 is_deeply(distance("foo","four"),2,"Correct distance foo four");

@@ -9,6 +9,7 @@ Revision history for Perl module Text::Levenshtein
     - Moved test.pl to t/01-original.t and changed it to be a proper testsuite
     - Removed META.yml so metadata files will be generated
     - Specified min perl version as 5.6.0
+    - Added a bunch of similar modules to the SEE ALSO section
     - Added an explicit COPYRIGHT AND LICENSE section in pod
     - Reformatted Changes as per CPAN::Changes::Spec
 

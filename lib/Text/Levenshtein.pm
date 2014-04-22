@@ -137,13 +137,34 @@ and returns the edit distance between them.
 
 =head1 SEE ALSO
 
-See also Text::LevenshteinXS on CPAN if you do not require a perl-only
-implementation.
-It is extremely faster in nearly all cases.
+There are many different modules on CPAN for calculating the edit
+distance between two strings. Here's just a selection.
 
-See also Text::WagnerFischer on CPAN for a configurable edit distance, i.e. for
-configurable costs (weights) for the edits.
+L<Text::LevenshteinXS> and L<Text::Levenshtein::XS> are both versions
+of the Levenshtein algorithm that require a C compiler,
+but will be a lot faster than this module.
 
+The Damerau–Levenshtein edit distance is like the Levenshtein distance,
+but in addition to insertion, deletion and substitution, it also
+considers the transposition of two adjacent characters to be a single edit.
+The module L<Text::Levenshtein::Damerau> defaults to using a pure perl
+implementation, but if you've installed L<Text::Levenshtein::Damerau::XS>
+then it will be a lot quicker.
+
+L<Text::WagnerFischer> is an implementation of the
+Wagner-Fischer edit distance, which is similar to the Levenshtein,
+but applies different weights to each edit type.
+
+L<Text::Brew> is an implementation of the Brew edit distance,
+which is another algorithm based on edit weights.
+
+L<Text::Fuzzy> provides a number of operations for partial or fuzzy
+matching of text based on edit distance. L<Text::Fuzzy::PP> is a pure
+perl implementation of the same interface.
+
+L<String::Similarity> takes two strings and returns a value between
+0 (meaning entirely different) and 1 (meaning identical).
+Apparently based on edit distance.
 
 =head1 AUTHOR
 

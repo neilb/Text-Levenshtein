@@ -3,6 +3,7 @@
 # 01-original.t - this is the original testsuite that was included
 #
 
+use 5.006;
 use strict;
 use warnings;
 

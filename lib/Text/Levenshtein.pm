@@ -1,14 +1,15 @@
 package Text::Levenshtein;
 
+use 5.006;
 use strict;
+use warnings;
 use Exporter;
-use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
-$VERSION     = '0.06_02';
-@ISA         = qw(Exporter);
-@EXPORT      = ();
-@EXPORT_OK   = qw(&distance &fastdistance);
-%EXPORT_TAGS = ();
+our $VERSION     = '0.06_02';
+our @ISA         = qw(Exporter);
+our @EXPORT      = ();
+our @EXPORT_OK   = qw(&distance &fastdistance);
+our %EXPORT_TAGS = ();
 
 
 sub _min

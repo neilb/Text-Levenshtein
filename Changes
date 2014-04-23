@@ -1,5 +1,9 @@
 Revision history for Perl module Text::Levenshtein
 
+0.08 2014-04-23
+    - Copy and pasting text from a web page ended up with a UTF-8 dash,
+      instead of the hyphen character I assumed was there. RT#94962
+
 0.07 2014-04-23
 
     - Completely rewrote module, based on the "iterative with two matrix rows"

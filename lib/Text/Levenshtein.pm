@@ -135,7 +135,7 @@ L<Text::LevenshteinXS> and L<Text::Levenshtein::XS> are both versions
 of the Levenshtein algorithm that require a C compiler,
 but will be a lot faster than this module.
 
-The Damerau–Levenshtein edit distance is like the Levenshtein distance,
+The Damerau-Levenshtein edit distance is like the Levenshtein distance,
 but in addition to insertion, deletion and substitution, it also
 considers the transposition of two adjacent characters to be a single edit.
 The module L<Text::Levenshtein::Damerau> defaults to using a pure perl

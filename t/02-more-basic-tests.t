@@ -126,3 +126,8 @@ Russian example #6
 определение
 3
 --
+Another test for UTF-8 using Japanese test
+あいうえお
+あいうお
+1
+--

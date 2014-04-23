@@ -5,6 +5,7 @@ Revision history for Perl module Text::Levenshtein
       instead of the hyphen character I assumed was there. RT#94962
     - Added Japanese hiragana test
     - Added some Russian test cases -- thanks to Vyacheslav Matyukhin
+    - Another test for UTF-8, in Japanese, from Ben Bullock.
 
 0.07 2014-04-23
 

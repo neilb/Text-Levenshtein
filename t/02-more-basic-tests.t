@@ -96,3 +96,33 @@ Check edit distance between "katana" and "katakana", in hiragana
 カタカナ
 1
 --
+Russian example #1
+решение
+решето
+3
+--
+Russian example #2
+статуя
+статус
+1
+--
+Russian example #3
+дверь
+двор
+2
+--
+Russian example #4
+смысл
+мысль
+2
+--
+Russian example #5
+кость
+кисть
+1
+--
+Russian example #6
+распределение
+определение
+3
+--

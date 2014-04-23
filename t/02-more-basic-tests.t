@@ -91,3 +91,9 @@ cafe
 café
 1
 --
+Test for UTF-8 characters
+あいうえお
+あいうお
+1
+--
+

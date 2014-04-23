@@ -91,3 +91,8 @@ cafe
 café
 1
 --
+Check edit distance between "katana" and "katakana", in hiragana
+カタナ
+カタカナ
+1
+--

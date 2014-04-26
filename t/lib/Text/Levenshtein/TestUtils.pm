@@ -57,7 +57,8 @@ sub parse_tests
     local $_;
 
     while (<$fh>) {
-        next if /^--/;
+        next if /^--/;  # test case divider
+        next if /^#/;   # comment
         chomp;
         push(@fields, $_);
         if (@fields == 3) {

@@ -3,6 +3,10 @@ package Text::Levenshtein::TestUtils;
 use strict;
 use warnings;
 
+# This line is needed before we use Test::More, to suppress warnings
+# about "Wide character in print" from Test::Builder
+use open ':std', ':encoding(utf8)';
+
 use Test::More 0.88;
 use Text::Levenshtein qw/ distance fastdistance /;
 use parent 'Exporter';

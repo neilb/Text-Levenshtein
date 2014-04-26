@@ -6,6 +6,8 @@ Revision history for Perl module Text::Levenshtein
       write tests (for different languages).
     - Added Swedish tests in t/20-swedish.t - thanks to Graham Bowers.
     - Moved Russian tests (from MMCLERIC) to t/21-russian.t.
+    - Added separate Japanese tests in t/22-japanese.t
+      Thanks to Robert Fraser.
 
 0.08 2014-04-23 NEILB
 

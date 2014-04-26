@@ -91,13 +91,3 @@ cafe
 café
 1
 --
-Check edit distance between "katana" and "katakana", in hiragana
-カタナ
-カタカナ
-1
---
-Another test for UTF-8 using Japanese test
-あいうえお
-あいうお
-1
---

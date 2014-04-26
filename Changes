@@ -8,6 +8,7 @@ Revision history for Perl module Text::Levenshtein
     - Moved Russian tests (from MMCLERIC) to t/21-russian.t.
     - Added separate Japanese tests in t/22-japanese.t
       Thanks to Robert Fraser.
+    - Added Greek tests in t/23-greek.t - thanks to Wikipedia.
 
 0.08 2014-04-23 NEILB
 

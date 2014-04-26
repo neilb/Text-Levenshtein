@@ -5,6 +5,7 @@ Revision history for Perl module Text::Levenshtein
     - Added Text::Levenshtein::TestUtils in t/lib/ to make it easy to
       write tests (for different languages).
     - Added Swedish tests in t/20-swedish.t - thanks to Graham Bowers.
+    - Moved Russian tests (from MMCLERIC) to t/21-russian.t.
 
 0.08 2014-04-23 NEILB
 

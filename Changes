@@ -1,5 +1,10 @@
 Revision history for Perl module Text::Levenshtein
 
+0.09 2014-04-26 NEILB
+
+    - Added Text::Levenshtein::TestUtils in t/lib/ to make it easy to
+      write tests (for different languages).
+
 0.08 2014-04-23 NEILB
 
     - Copy and pasting text from a web page ended up with a UTF-8 dash,

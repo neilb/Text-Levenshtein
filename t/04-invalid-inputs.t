@@ -16,14 +16,14 @@ ok($@ && $@ =~ m!takes 2 or more arguments!,
    "passing one argument to distance() should croak");
 
 eval { $distance = fastdistance() };
-ok($@ && $@ =~ m!takes exactly 2 arguments!,
+ok($@ && $@ =~ m!takes 2 or 3 arguments!,
    "passing no arguments to fastdistance() should croak");
 
 eval { $distance = fastdistance('pink') };
-ok($@ && $@ =~ m!takes exactly 2 arguments!,
+ok($@ && $@ =~ m!takes 2 or 3 arguments!,
    "passing one argument to fastdistance() should croak");
 
 eval { $distance = fastdistance('pink', 'blue', 'brown') };
-ok($@ && $@ =~ m!takes exactly 2 arguments!,
+ok($@ && $@ =~ m!takes 2 or 3 arguments!,
    "passing three argument to fastdistance() should croak");
 

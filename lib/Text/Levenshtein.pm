@@ -15,12 +15,15 @@ our %EXPORT_TAGS = ();
 
 sub distance
 {
+    my $opt = pop(@_) if @_ > 0 && ref($_[-1]) eq 'HASH';
     croak "distance() takes 2 or more arguments" if @_ < 2;
 	my ($s,@t)=@_;
     my @results;
 
+    $opt = {} if not defined $opt;
+
 	foreach my $t (@t) {
-		push(@results, fastdistance($s, $t));
+		push(@results, fastdistance($s, $t, $opt));
 	}
 
 	return wantarray ? @results : $results[0];
@@ -31,10 +34,27 @@ sub distance
 # http://en.wikipedia.org/wiki/Levenshtein_distance#Computing_Levenshtein_distance
 sub fastdistance
 {
-    croak "fastdistance() takes exactly 2 arguments" unless @_ == 2;
+    my $opt = pop(@_) if @_ > 0 && ref($_[-1]) eq 'HASH';
+    croak "fastdistance() takes 2 or 3 arguments" unless @_ == 2;
     my ($s, $t) = @_;
     my (@v0, @v1);
     my ($i, $j);
+    my $eq;
+
+    $opt = {} if not defined $opt;
+    if ($opt->{ignore_diacritics}) {
+        require Unicode::Collate;
+        my $collator = Unicode::Collate->new(normalization => undef, level => 1);
+        $eq = sub {
+            return $collator->eq(@_);
+        };
+    }
+    else {
+        $eq = sub {
+            my ($x, $y) = @_;
+            return $x eq $y;
+        };
+    }
 
     return 0 if $s eq $t;
     return length($s) if !$t || length($t) == 0;
@@ -51,7 +71,8 @@ sub fastdistance
         $v1[0] = $i + 1;
 
         for ($j = 0; $j < $t_length; $j++) {
-            my $cost = substr($s, $i, 1) eq substr($t, $j, 1) ? 0 : 1;
+            # my $cost = substr($s, $i, 1) eq substr($t, $j, 1) ? 0 : 1;
+            my $cost = $eq->(substr($s, $i, 1), substr($t, $j, 1)) ? 0 : 1;
             $v1[$j + 1] = List::Util::min(
                               $v1[$j] + 1,
                               $v0[$j + 1] + 1,
@@ -70,6 +91,8 @@ sub fastdistance
 1;
 
 __END__
+
+=encoding UTF8
 
 =head1 NAME
 
@@ -125,6 +148,20 @@ but they now run the same function to calculate the edit distance.
 
 Unlike C<distance()>, C<fastdistance()> only takes two strings,
 and returns the edit distance between them.
+
+=head1 ignore_diacritics
+
+Both the C<distance()> and C<fastdistance()> functions can take
+a hashref with optional arguments, as the final argument.
+At the moment the only option is C<ignore_diacritics>.
+If this is true, then any diacritics are ignored when calculating
+edit distance. For example, "cafe" and "café" normally have an edit
+distance of 1, but when diacritics are ignored, the distance will be 0:
+
+ $distance = distance($word1, $word2, {ignore_diacritics => 1});
+
+If you turn on this option, then L<Unicode::Collate> will be loaded,
+and used when comparing characters in the words.
 
 =head1 SEE ALSO
 

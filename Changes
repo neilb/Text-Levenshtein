@@ -1,5 +1,11 @@
 Revision history for Perl module Text::Levenshtein
 
+0.10 2014-10-25 NEILB
+
+    - Added { ignore_diacritics => 1 } option, which can be passed as the
+      last argument to the distance() and fastdistance() subs.
+      OALDERS++ for the suggestion in RT#97883.
+
 0.09 2014-04-26 NEILB
 
     - Added Text::Levenshtein::TestUtils in t/lib/ to make it easy to

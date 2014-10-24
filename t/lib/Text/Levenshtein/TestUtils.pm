@@ -16,9 +16,13 @@ our @EXPORT_OK = qw/ run_data_tests /;
 
 sub run_data_tests
 {
+    my $opt = {};
     my $package = (caller(0))[0];
     my $distance;
     my $fh;
+    my @extra;
+
+    @extra = @_;
 
     $fh = do {
         no strict 'refs';
@@ -30,19 +34,19 @@ sub run_data_tests
     plan tests => 4 * @tests;
 
     foreach my $test (@tests) {
-        $distance = distance($test->{word1}, $test->{word2});
+        $distance = distance($test->{word1}, $test->{word2}, @extra);
         ok($distance == $test->{distance},
            "$test->{title} (distance)");
 
-        $distance = distance($test->{word2}, $test->{word1});
+        $distance = distance($test->{word2}, $test->{word1}, @extra);
         ok($distance == $test->{distance},
            "$test->{title} (reverse distance)");
 
-        $distance = fastdistance($test->{word1}, $test->{word2});
+        $distance = fastdistance($test->{word1}, $test->{word2}, @extra);
         ok($distance == $test->{distance},
            "$test->{title} (fastdistance)");
 
-        $distance = fastdistance($test->{word2}, $test->{word1});
+        $distance = fastdistance($test->{word2}, $test->{word1}, @extra);
         ok($distance == $test->{distance},
            "$test->{title} (reverse fastdistance)");
     }

@@ -29,6 +29,13 @@ sub distance
 	return wantarray ? @results : $results[0];
 }
 
+my $eq_with_diacritics = sub {
+    my ($x, $y) = @_;
+    return $x eq $y;
+};
+
+my $eq_without_diacritics;
+
 # This is the "Iterative with two matrix rows" version
 # from the wikipedia page
 # http://en.wikipedia.org/wiki/Levenshtein_distance#Computing_Levenshtein_distance
@@ -43,17 +50,17 @@ sub fastdistance
 
     $opt = {} if not defined $opt;
     if ($opt->{ignore_diacritics}) {
-        require Unicode::Collate;
-        my $collator = Unicode::Collate->new(normalization => undef, level => 1);
-        $eq = sub {
-            return $collator->eq(@_);
-        };
+        if (not defined $eq_without_diacritics) {
+            require Unicode::Collate;
+            my $collator = Unicode::Collate->new(normalization => undef, level => 1);
+            $eq_without_diacritics = sub {
+                return $collator->eq(@_);
+            };
+        }
+        $eq = $eq_without_diacritics;
     }
     else {
-        $eq = sub {
-            my ($x, $y) = @_;
-            return $x eq $y;
-        };
+        $eq = $eq_with_diacritics;
     }
 
     return 0 if $s eq $t;
@@ -158,10 +165,14 @@ If this is true, then any diacritics are ignored when calculating
 edit distance. For example, "cafe" and "café" normally have an edit
 distance of 1, but when diacritics are ignored, the distance will be 0:
 
+ use Text::Levenshtein 0.11 qw/ distance /;
  $distance = distance($word1, $word2, {ignore_diacritics => 1});
 
 If you turn on this option, then L<Unicode::Collate> will be loaded,
 and used when comparing characters in the words.
+
+Early version of C<Text::Levenshtein> didn't support this version,
+so you should require version 0.11 or later, as above.
 
 =head1 SEE ALSO
 

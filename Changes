@@ -1,6 +1,11 @@
 Revision history for Perl module Text::Levenshtein
 
-0.10 2014-10-25 NEILB
+0.11 2014-10-26 NEILB
+    - The first implementation of the ignore_diacritics option was
+      very inefficient. It's now at least an order of magnitude faster,
+      if calling it multiple times.
+
+0.10 2014-10-24 NEILB
 
     - Added { ignore_diacritics => 1 } option, which can be passed as the
       last argument to the distance() and fastdistance() subs.

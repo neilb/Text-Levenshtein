@@ -1,5 +1,9 @@
 Revision history for Perl module Text::Levenshtein
 
+0.12 2014-10-26 NEILB
+    - Require Unicode::Collate 1.04 or higher. Tests on early Perls were
+      failing, most often down to Unicode::Collate 0.52, on Perl 5.8.9.
+
 0.11 2014-10-26 NEILB
     - The first implementation of the ignore_diacritics option was
       very inefficient. It's now at least an order of magnitude faster,

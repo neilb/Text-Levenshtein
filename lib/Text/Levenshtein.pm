@@ -205,6 +205,11 @@ L<String::Similarity> takes two strings and returns a value between
 0 (meaning entirely different) and 1 (meaning identical).
 Apparently based on edit distance.
 
+L<Text::Dice> calculates
+L<Dice's coefficient|https://en.wikipedia.org/wiki/Sørensen–Dice_coefficient>
+for two strings. This formula was originally developed to measure the
+similarity of two different populations in ecological research.
+
 =head1 REPOSITORY
 
 L<https://github.com/neilbowers/Text-Levenshtein>

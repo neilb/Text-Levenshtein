@@ -2,6 +2,8 @@ Revision history for Perl module Text::Levenshtein
 
 0.12 2015-08-11 NEILB
     - Added Text::Dice to SEE ALSO.
+    - Added [MetaJSON] to dist.ini, so META.json will be included in
+      the release tarball.
 
 0.12 2014-10-26 NEILB
     - Require Unicode::Collate 1.04 or higher. Tests on early Perls were

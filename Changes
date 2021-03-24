@@ -3,6 +3,7 @@ Revision history for Perl module Text::Levenshtein
 0.14 2021-03-24 NEILB
     - Added String::KeyboardDistance to SEE ALSO
     - Added Text::Levenshtein::BV to SEE ALSO
+    - Added Text::Levenshtein::Edlib to SEE ALSO
 
 0.13 2015-08-11 NEILB
     - Added Text::Dice to SEE ALSO.

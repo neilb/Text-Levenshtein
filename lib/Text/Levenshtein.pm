@@ -183,6 +183,11 @@ L<Text::LevenshteinXS> and L<Text::Levenshtein::XS> are both versions
 of the Levenshtein algorithm that require a C compiler,
 but will be a lot faster than this module.
 
+L<Text::Levenshtein::Edlib> is a Perl wrapper around a C++
+library that provides the Levenshtein edit distance and
+optimal alignment path for a pair of strings.
+It doesn't support UTF-8 strings, though.
+
 L<Text::Levenshtein::BV> implements the Levenshtein algorithm
 using bit vectors, and claims to be faster than this implementation.
 I haven't benchmarked them.

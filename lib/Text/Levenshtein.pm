@@ -183,6 +183,10 @@ L<Text::LevenshteinXS> and L<Text::Levenshtein::XS> are both versions
 of the Levenshtein algorithm that require a C compiler,
 but will be a lot faster than this module.
 
+L<Text::Levenshtein::BV> implements the Levenshtein algorithm
+using bit vectors, and claims to be faster than this implementation.
+I haven't benchmarked them.
+
 The Damerau-Levenshtein edit distance is like the Levenshtein distance,
 but in addition to insertion, deletion and substitution, it also
 considers the transposition of two adjacent characters to be a single edit.

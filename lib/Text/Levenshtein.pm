@@ -210,6 +210,9 @@ L<Dice's coefficient|https://en.wikipedia.org/wiki/Sørensen–Dice_coefficient>
 for two strings. This formula was originally developed to measure the
 similarity of two different populations in ecological research.
 
+L<String::KeyboardDistance> and L<String::KeyboardDistanceXS>
+calculate the "keyboard distance" between two strings.
+
 =head1 REPOSITORY
 
 L<https://github.com/neilbowers/Text-Levenshtein>

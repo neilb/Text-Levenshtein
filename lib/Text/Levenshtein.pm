@@ -183,6 +183,12 @@ L<Text::LevenshteinXS> and L<Text::Levenshtein::XS> are both versions
 of the Levenshtein algorithm that require a C compiler,
 but will be a lot faster than this module.
 
+L<Text::Levenshtein::Flexible> is another C implementation,
+but offers some twists: you can specify a maximum distance that
+you're interested in, which makes it faster;
+you can also give different costs to insertion, deletion,
+and substitution. Hasn't been updated since 2014.
+
 L<Text::Levenshtein::Edlib> is a Perl wrapper around a C++
 library that provides the Levenshtein edit distance and
 optimal alignment path for a pair of strings.
